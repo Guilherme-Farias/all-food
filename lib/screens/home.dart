@@ -1,4 +1,5 @@
 import 'package:FoodUI/components/categories_list_view.dart';
+import 'package:FoodUI/components/recent_products_grid_view.dart';
 import 'package:FoodUI/models/user.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
@@ -113,7 +114,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: ListView(
-        children: [imageCarousel, CategoriesListView()],
+        children: [
+          imageCarousel,
+          CategoriesListView(),
+          RecentProductsGridView(),
+        ],
       ),
     );
   }
