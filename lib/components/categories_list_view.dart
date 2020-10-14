@@ -1,7 +1,10 @@
+import 'package:FoodUI/models/categories/food_category_type.dart';
+import 'package:FoodUI/models/categories/food_category_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoriesListView extends StatelessWidget {
+  final List<FoodCategoryModel> categories = getAllCategories();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,15 +20,13 @@ class CategoriesListView extends StatelessWidget {
           ),
           Container(
             height: 110,
-            child: ListView(
+            child: ListView.builder(
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                final FoodCategoryModel category = categories[index];
+                return FoodCategoryCard(category, onClick: () {});
+              },
               scrollDirection: Axis.horizontal,
-              children: [
-                Category('assets/categories/asianfood.svg', 'Asian'),
-                Category('assets/categories/breakfast.svg', 'Breakfast'),
-                Category('assets/categories/pizza.svg', 'Pizza'),
-                Category('assets/categories/soup.svg', 'Soup'),
-                Category('assets/categories/summer.svg', 'Summer'),
-              ],
             ),
           ),
         ],
@@ -34,37 +35,38 @@ class CategoriesListView extends StatelessWidget {
   }
 }
 
-class Category extends StatelessWidget {
-  final String imgPath;
-  final String imgCaption;
+class FoodCategoryCard extends StatelessWidget {
+  final FoodCategoryModel category;
+  final Function onClick;
 
-  const Category(this.imgPath, this.imgCaption);
+  const FoodCategoryCard(this.category, {@required this.onClick});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(2.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () => onClick(),
         child: Container(
           width: 90,
           child: Column(
-            children: [
+            children: <Widget>[
               SizedBox(
                 height: 80,
                 child: SvgPicture.asset(
-                  imgPath,
-                  //colorBlendMode: BlendMode.darken,
+                  category.imgPath,
+                  colorBlendMode: BlendMode.darken,
                   placeholderBuilder: (BuildContext context) => Container(
-                      padding: const EdgeInsets.all(30.0),
-                      child: const CircularProgressIndicator()),
+                    padding: const EdgeInsets.all(30.0),
+                    child: const CircularProgressIndicator(),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 5.0,
               ),
               Text(
-                imgCaption,
+                category.name,
                 style: TextStyle(color: Colors.black45, fontSize: 14.0),
               )
             ],

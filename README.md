@@ -2,6 +2,8 @@
 
 A food emoji sales app
 
+[Icon Credits: Darius Dan]['https://www.flaticon.com/packs/street-food-11']
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

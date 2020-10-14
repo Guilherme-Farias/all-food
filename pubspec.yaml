@@ -27,6 +27,7 @@ dependencies:
   font_awesome_flutter:
   carousel_pro:
   flutter_svg:
+  auto_size_text:
 
 
   # The following adds the Cupertino Icons font to your application.

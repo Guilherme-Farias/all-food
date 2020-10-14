@@ -1,5 +1,6 @@
 import 'package:FoodUI/components/categories_list_view.dart';
-import 'package:FoodUI/components/recent_products_grid_view.dart';
+import 'package:FoodUI/components/food_grid_view.dart';
+import 'package:FoodUI/models/food/food_list.dart';
 import 'package:FoodUI/models/user.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final User user = new User('Guilherme Farias', 'guicfarias11@gmail.com');
+  //final List<Food> foodList = FoodList().productList;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,13 @@ class _HomePageState extends State<HomePage> {
           AssetImage('assets/w4.jpeg'),
           AssetImage('assets/m2.jpg'),
         ],
-        autoplay: false,
         dotSize: 4.0,
-        dotBgColor: Colors.red,
         indicatorBgPadding: 2.0,
+        dotBgColor: Colors.red,
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        autoplayDuration: Duration(seconds: 10),
+        animationDuration: Duration(seconds: 1),
       ),
     );
     return Scaffold(
@@ -117,7 +122,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           imageCarousel,
           CategoriesListView(),
-          RecentProductsGridView(),
+          FoodGridView('Popular foods', FoodList.productList),
         ],
       ),
     );
