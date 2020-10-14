@@ -1,5 +1,7 @@
 import 'package:FoodUI/models/user.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,10 +11,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final User user = new User('Guilherme Farias', 'guicfarias11@gmail.com');
+
   @override
   Widget build(BuildContext context) {
+    final Widget imageCarousel = Container(
+      height: 200,
+      child: Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          AssetImage('assets/w3.jpeg'),
+          AssetImage('assets/m1.jpeg'),
+          AssetImage('assets/c1.jpg'),
+          AssetImage('assets/w4.jpeg'),
+          AssetImage('assets/m2.jpg'),
+        ],
+        autoplay: false,
+        dotSize: 4.0,
+        dotBgColor: Colors.red,
+        indicatorBgPadding: 2.0,
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: Text('Food Emoji Store'),
         actions: [
           new IconButton(
@@ -73,16 +94,27 @@ class _HomePageState extends State<HomePage> {
             Divider(),
             ListTile(
               onTap: () {},
-              leading: Icon(FontAwesomeIcons.cog),
+              leading: Icon(
+                FontAwesomeIcons.cog,
+                color: Colors.blue,
+              ),
               title: Text('Settings'),
             ),
             ListTile(
               onTap: () {},
-              leading: Icon(FontAwesomeIcons.solidQuestionCircle),
+              leading: Icon(
+                FontAwesomeIcons.solidQuestionCircle,
+                color: Colors.green,
+              ),
               title: Text('About'),
             ),
           ],
         ),
+      ),
+      body: ListView(
+        children: [
+          imageCarousel,
+        ],
       ),
     );
   }
