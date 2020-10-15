@@ -1,6 +1,12 @@
 # All-food
 
-A test app I made to improve my Flutter skills is a food delivery app. Here are some screenshots. special pizza
+A test app I made to improve my Flutter skills is a food delivery app. Here are some screenshots.
+
+<div>
+<img src='https://github.com/Guilherme-Farias/all-food/blob/master/screenshots/home_page.png' height=500 hspace="20">
+<img src='https://github.com/Guilherme-Farias/all-food/blob/master/screenshots/drawer.png' height=500 hspace="20">
+<img src='https://github.com/Guilherme-Farias/all-food/blob/master/screenshots/product_detail.png' height=500>
+</div>
 
 
 [Icons Credits: Darius Dan]['https://www.flaticon.com/packs/street-food-11']
