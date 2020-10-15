@@ -23,35 +23,53 @@ class _HomePageState extends State<HomePage> {
       child: Carousel(
         boxFit: BoxFit.cover,
         images: [
-          AssetImage('assets/w3.jpeg'),
-          AssetImage('assets/m1.jpeg'),
-          AssetImage('assets/c1.jpg'),
-          AssetImage('assets/w4.jpeg'),
-          AssetImage('assets/m2.jpg'),
+          Image.asset(
+            'assets/foods/food3.jpg',
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/foods/food21.jpg',
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/foods/food1.jpg',
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/foods/food15.jpg',
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/foods/food5.jpg',
+            fit: BoxFit.cover,
+          ),
         ],
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
-        dotBgColor: Colors.red,
+        dotBgColor: Colors.black,
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
-        autoplayDuration: Duration(seconds: 10),
+        autoplayDuration: Duration(seconds: 7),
         animationDuration: Duration(seconds: 1),
       ),
     );
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text('Food Emoji Store'),
+        title: Text(
+          'All-food',
+          style: TextStyle(color: Colors.green),
+        ),
         actions: [
           new IconButton(
               icon: Icon(
-                FontAwesomeIcons.search,
+                Icons.search,
                 size: 20,
               ),
               onPressed: () {}),
           new IconButton(
               icon: Icon(
-                FontAwesomeIcons.shoppingCart,
+                Icons.shopping_cart,
                 size: 20,
               ),
               onPressed: () {}),
@@ -122,7 +140,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           imageCarousel,
           CategoriesListView(),
-          FoodGridView('Popular foods', FoodList.productList),
+          FoodGridView('Popular foods', FoodList.getAllFoods()),
         ],
       ),
     );

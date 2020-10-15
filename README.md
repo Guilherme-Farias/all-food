@@ -1,8 +1,9 @@
-# Food emoji store
+# All-food
 
-A food emoji sales app
+A test app I made to improve my Flutter skills is a food delivery app. Here are some screenshots. special pizza
 
-[Icon Credits: Darius Dan]['https://www.flaticon.com/packs/street-food-11']
+
+[Icons Credits: Darius Dan]['https://www.flaticon.com/packs/street-food-11']
 
 ## Getting Started
 

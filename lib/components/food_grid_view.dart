@@ -32,7 +32,7 @@ class FoodGridViewState extends State<FoodGridView> {
             ),
           ),
           Container(
-            height: 330,
+            height: 500,
             child: widget.foodList.isNotEmpty
                 ? GridView.builder(
                     itemCount: widget.foodList.length,
@@ -42,10 +42,8 @@ class FoodGridViewState extends State<FoodGridView> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
                   )
-                : CenteredMessage(
-                    'No similar foods found',
-                    icon: Icons.question_answer,
-                  ),
+                : CenteredMessage('No ${widget.title} found',
+                    icon: Icons.error),
           )
         ],
       ),
@@ -107,7 +105,7 @@ class FoodCard extends StatelessWidget {
                             '\$${food.price}',
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
-                              color: Colors.red,
+                              color: Colors.green,
                               fontSize: 18,
                             ),
                           ),

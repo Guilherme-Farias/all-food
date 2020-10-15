@@ -1,8 +1,8 @@
 import 'package:FoodUI/components/food_grid_view.dart';
 import 'package:FoodUI/models/food/food.dart';
 import 'package:FoodUI/models/food/food_list.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProductDetail extends StatefulWidget {
   final Food food;
@@ -19,17 +19,20 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text('Food Emoji Store'),
+        title: Text(
+          'All-food',
+          style: TextStyle(color: Colors.green),
+        ),
         actions: [
           new IconButton(
               icon: Icon(
-                FontAwesomeIcons.search,
+                Icons.search,
                 size: 20,
               ),
               onPressed: () {}),
           new IconButton(
               icon: Icon(
-                FontAwesomeIcons.shoppingCart,
+                Icons.shopping_cart,
                 size: 20,
               ),
               onPressed: () {}),
@@ -48,151 +51,61 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
               ),
               footer: Container(
-                color: Colors.white70,
-                child: ListTile(
-                  leading: Text(
-                    widget.food.name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        '\$${widget.food.oldPrice}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            color: Colors.black54,
-                            decoration: TextDecoration.lineThrough),
+                height: 60,
+                color: Colors.white,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: AutoSizeText(widget.food.name,
+                          maxLines: 1,
+                          minFontSize: 12,
+                          maxFontSize: 24,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Text(
+                            '\$${widget.food.oldPrice}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black54,
+                                decoration: TextDecoration.lineThrough),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 16.0,
+                            ),
+                            child: Text(
+                              '\$${widget.food.price}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                color: Colors.green,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        '\$${widget.food.price}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w800, color: Colors.red),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Size'),
-                            content: Text('Choose the size'),
-                            actions: [
-                              RaisedButton(
-                                color: Colors.red,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text('close'),
-                              )
-                            ],
-                          );
-                        });
-                  },
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  elevation: 0.2,
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text('Size'),
-                      ),
-                      Expanded(
-                        child: Icon(Icons.arrow_drop_down),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Color'),
-                            content: Text('Choose the color'),
-                            actions: [
-                              RaisedButton(
-                                color: Colors.red,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text('close'),
-                              )
-                            ],
-                          );
-                        });
-                  },
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  elevation: 0.2,
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text('Color'),
-                      ),
-                      Expanded(
-                        child: Icon(Icons.arrow_drop_down),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Quantity'),
-                            content: Text('Choose the Quantity'),
-                            actions: [
-                              RaisedButton(
-                                color: Colors.red,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text('close'),
-                              )
-                            ],
-                          );
-                        });
-                  },
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  elevation: 0.2,
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text('Qty'),
-                      ),
-                      Expanded(
-                        child: Icon(Icons.arrow_drop_down),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
           ),
           Row(
             children: <Widget>[
               Expanded(
                 child: RaisedButton(
                   onPressed: () {},
-                  color: Colors.red,
+                  color: Colors.green,
                   textColor: Colors.white,
                   elevation: 0.2,
                   child: Text('Buy now'),
@@ -201,13 +114,13 @@ class _ProductDetailState extends State<ProductDetail> {
               IconButton(
                 icon: Icon(
                   Icons.add_shopping_cart,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                 onPressed: () {},
               ),
               IconButton(
                 icon: Icon(Icons.favorite),
-                color: Colors.red,
+                color: Colors.green,
                 onPressed: () {},
               ),
             ],
